@@ -3727,9 +3727,9 @@ var SpriteBatchBug1217 = SpriteTestDemo.extend({
 });
 
 var TextureColorCacheIssue = SpriteTestDemo.extend({
-
+                                                   
     _title:"Texture Color Cache Issue Test",
-    _subtitle:"You should see two different sprites colored green and blue",
+    _subtitle:"You should see two different sprites colored magenta and yellow",
 
     ctor:function() {
         this._super();
@@ -3747,8 +3747,14 @@ var TextureColorCacheIssue = SpriteTestDemo.extend({
         this.addChild(grossini);
         this.addChild(sister);
 
-        grossini.setColor(cc.c3b(1, 255, 1));
-        sister.setColor(cc.c3b(1, 1, 255));
+        for (var i = 0; i < 10; ++i) {
+            sister.setColor(cc.c3b(128, 128, 128 + i));
+            grossini.setColor(cc.c3b(128, 128, 128 + i));
+        }
+
+        grossini.setColor(cc.c3b(255, 255, 0));
+        sister.setColor(cc.c3b(255, 0, 255));
+
     }
 });
 
